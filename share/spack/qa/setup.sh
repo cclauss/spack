@@ -28,10 +28,7 @@ if [[ "$COVERAGE" == "true" ]]; then
 
     # make a coverage directory for kcov, and patch cc to use our bashcov
     # script instead of plain bash
-    if [[ $TEST_SUITE == unit &&   # kcov segfaults for the MPICH build test
-          $TRAVIS_OS_NAME == linux &&
-          $TRAVIS_PYTHON_VERSION != 2.6 ]];
-    then
+    if [[ $TEST_SUITE == unit && $TRAVIS_PYTHON_VERSION != 2.6 ]]; then
         mkdir -p coverage
         cc_script="$SPACK_ROOT/lib/spack/env/cc"
         bashcov=$(realpath ${QA_DIR}/bashcov)
